@@ -2920,7 +2920,7 @@ class TaskState(MultiTableCopyMixin, models.Model):
 
     @transaction.atomic
     def cancel(self, user=None, resume=False):
-        self.status = 'cancelled'
+        self.status = self.STATUS_CANCELLED
         self.finished_at = timezone.now()
         self.save()
         if resume:
